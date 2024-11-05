@@ -1,0 +1,17 @@
+version: '3.9' ## VERSIÓN DE YMAL NO DE DOCKER
+
+
+services:
+  ## LOS SERVICIOS QUE QUIERO ADJUNTAR
+  mongodb_efigas:
+      ## CUAL ES LA IMAGEN PARA LEVANTAR ESTE SERVICIO
+      image: mongo:5.0 ## versión de mongo
+      ports : ### COMO NOS VAMOS A COMUNICAR CON ESTA BASE DE DATOS
+          - 27017:27017 ## PUERTO POR EL QUE MONGO RECIBE SU COMUNICACIÓN
+      environment:
+          ### ESTAS CREDENCIALES LAS PUEDO DEFINIR
+          ### NO SON LAS DE MONGO ATLAS
+          - MONGO_INITDB_ROOT_USERNAME=root
+          - MONGO_INITDB_ROOT_PASSWORD=root123
+      volumes: ### FORMA EN QUE VAMOS A ORGANIZAR MI SISTEMA DE CARPETAS
+          - ./mongo_data:/data/db ## mongo guarda en un formato /data/db
